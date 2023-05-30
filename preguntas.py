@@ -93,13 +93,12 @@ def pregunta_02():
             contador[4][1]= contador[4][1]+1
 
         i = i +1
-        
-        
+       
     for m in range(5):
         for n in range(2):
             print(contador[m][n])
 
-    return 
+    return contador
 
 
 

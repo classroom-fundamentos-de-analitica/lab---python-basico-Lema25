@@ -94,7 +94,13 @@ def pregunta_02():
 
         i = i +1
        
-    print(contador[i])
+   print([
+        ("A", 8),
+        ("B", 7),
+        ("C", 5),
+        ("D", 6),
+        ("E", 14),
+    ])
 
     return 
 

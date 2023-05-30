@@ -95,9 +95,9 @@ def pregunta_02():
         i = i +1
         
         
-        for i in range(5):
-            for j in range(2):
-                print(contador[i][j])
+    for m in range(5):
+        for n in range(2):
+            print(contador[m][n])
 
     return 
 

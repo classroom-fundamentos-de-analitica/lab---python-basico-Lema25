@@ -94,9 +94,7 @@ def pregunta_02():
 
         i = i +1
        
-
-    for i in range(5):
-        print(contador[i])
+    print(contador[i])
 
     return 
 

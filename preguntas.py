@@ -12,6 +12,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+import csv
 
 def pregunta_01():
     """
@@ -21,7 +22,29 @@ def pregunta_01():
     214
 
     """
-    return
+
+    # Abrimos el archivo
+    datos = open("data.csv")
+
+    # Limpieza
+    datos = [line.replace("\t", ",") for line in datos]
+    datos = [line.replace("\n", "") for line in datos]
+
+    # Conversión de los strings a listas
+    datos = [line.split(",") for line in datos]
+   
+    # Organizando las filas
+    datos = [row[:11] for row in datos]
+
+    suma = 0
+    i=0
+
+    for row in datos:
+        suma = suma + int(datos[i][1])
+        i = i+1
+
+    return suma
+
 
 
 def pregunta_02():
@@ -39,7 +62,40 @@ def pregunta_02():
     ]
 
     """
-    return
+
+    # Abrimos el archivo
+    datos = open("data.csv")
+
+    # Limpieza
+    datos = [line.replace("\t", ",") for line in datos]
+    datos = [line.replace("\n", "") for line in datos]
+
+    # Conversión de los strings a listas
+    datos = [line.split(",") for line in datos]
+   
+    # Organizando las filas
+    datos = [row[:11] for row in datos]
+   
+    i=0
+ 
+    contador = [["A",0],["B",0],["C",0],["D",0],["E",0]] 
+
+    for row in datos:  
+        if datos[i][0] == "A":
+            contador[0][1]= contador[0][1]+1
+        elif datos[i][0] == "B":
+            contador[1][1]= contador[1][1]+1
+        elif datos[i][0] == "C":
+            contador[2][1]= contador[2][1]+1
+        elif datos[i][0] == "D":
+            contador[3][1]= contador[3][1]+1
+        elif datos[i][0] == "E":
+            contador[4][1]= contador[4][1]+1
+
+        i = i +1
+
+    return contador
+
 
 
 def pregunta_03():
@@ -57,7 +113,38 @@ def pregunta_03():
     ]
 
     """
-    return
+        # Abrimos el archivo
+    datos = open("data.csv")
+
+    # Limpieza
+    datos = [line.replace("\t", ",") for line in datos]
+    datos = [line.replace("\n", "") for line in datos]
+
+    # Conversión de los strings a listas
+    datos = [line.split(",") for line in datos]
+   
+    # Organizando las filas
+    datos = [row[:11] for row in datos]
+   
+    i=0
+ 
+    contador = [["A",0],["B",0],["C",0],["D",0],["E",0]] 
+
+    for row in datos:  
+        if datos[i][0] == "A":
+            contador[0][1]= contador[0][1]+int(datos[i][1])
+        elif datos[i][0] == "B":
+            contador[1][1]= contador[1][1]+int(datos[i][1])
+        elif datos[i][0] == "C":
+            contador[2][1]= contador[2][1]+int(datos[i][1])
+        elif datos[i][0] == "D":
+            contador[3][1]= contador[3][1]+int(datos[i][1])
+        elif datos[i][0] == "E":
+            contador[4][1]= contador[4][1]+int(datos[i][1])
+
+        i = i +1
+
+    return contador
 
 
 def pregunta_04():
@@ -82,8 +169,63 @@ def pregunta_04():
     ]
 
     """
-    return
+    # Abrimos el archivo
+    datos = open("data.csv")
 
+    # Limpieza
+    datos = [line.replace("\t", ",") for line in datos]
+    datos = [line.replace("\n", "") for line in datos]
+
+    # Conversión de los strings a listas
+    datos = [line.split(",") for line in datos]
+   
+    # Organizando las filas
+    datos = [row[:11] for row in datos]
+
+    fecha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
+    i=0 
+
+    for raw in datos:
+        fecha[i] = datos[i][2]
+        i = i+1
+
+    fecha = [line.replace("-", ",") for line in fecha]
+    fecha = [line.split(",") for line in fecha]
+
+    contador = [["01",0],["02",0],["03",0],["04",0],["05",0],["06",0],["07",0],["08",0],["09",0],["10",0],["11",0],["12",0]] 
+
+    cont = 0
+
+    for row in fecha:
+        if fecha[cont][1] == "01":
+            contador[0][1] = contador[0][1] + 1
+        if fecha[cont][1] == "02":
+            contador[1][1] = contador[1][1] + 1
+        if fecha[cont][1] == "03":
+            contador[2][1] = contador[2][1] + 1
+        if fecha[cont][1] == "04":
+            contador[3][1] = contador[3][1] + 1
+        if fecha[cont][1] == "05":
+            contador[4][1] = contador[4][1] + 1
+        if fecha[cont][1] == "06":
+            contador[5][1] = contador[5][1] + 1
+        if fecha[cont][1] == "07":
+            contador[6][1] = contador[6][1] + 1
+        if fecha[cont][1] == "08":
+            contador[7][1] = contador[7][1] + 1
+        if fecha[cont][1] == "09":
+            contador[8][1] = contador[8][1] + 1
+        if fecha[cont][1] == "10":
+            contador[9][1] = contador[9][1] + 1
+        if fecha[cont][1] == "11":
+            contador[10][1] = contador[10][1] + 1
+        if fecha[cont][1] == "12":
+            contador[11][1] = contador[11][1] + 1
+
+        cont  = cont +1
+
+    return contador
 
 def pregunta_05():
     """

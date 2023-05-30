@@ -94,11 +94,11 @@ def pregunta_02():
 
         i = i +1
        
-    for m in range(5):
-        for n in range(2):
-            print(contador[m][n])
 
-    return contador
+    for i in range(5):
+        print(contador[i])
+
+    return 
 
 
 

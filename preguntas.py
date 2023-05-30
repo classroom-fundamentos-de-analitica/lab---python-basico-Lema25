@@ -93,8 +93,13 @@ def pregunta_02():
             contador[4][1]= contador[4][1]+1
 
         i = i +1
+        
+        
+        for i in range(5):
+            for j in range(2):
+                contador[i][j]
 
-    return contador[]
+    return 
 
 
 
@@ -144,7 +149,7 @@ def pregunta_03():
 
         i = i +1
 
-    return contador[][]
+    return contador
 
 
 def pregunta_04():

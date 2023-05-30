@@ -62,7 +62,6 @@ def pregunta_02():
     ]
 
     """
-
     # Abrimos el archivo
     datos = open("data.csv")
 
@@ -81,20 +80,10 @@ def pregunta_02():
     contador = [["A",0],["B",0],["C",0],["D",0],["E",0]] 
 
     for row in datos:  
-        if datos[i][0] == "A":
-            contador[0][1]= contador[0][1]+1
-        elif datos[i][0] == "B":
-            contador[1][1]= contador[1][1]+1
-        elif datos[i][0] == "C":
-            contador[2][1]= contador[2][1]+1
-        elif datos[i][0] == "D":
-            contador[3][1]= contador[3][1]+1
-        elif datos[i][0] == "E":
-            contador[4][1]= contador[4][1]+1
-
+        for j in range(5):
+            if datos[i][0] == contador[j][0]:
+                contador[j][1]= contador[j][1]+1
         i = i +1
-       
-
 
     return contador
 

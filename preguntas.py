@@ -94,7 +94,7 @@ def pregunta_02():
 
         i = i +1
 
-    return contador
+    return contador[]
 
 
 
@@ -144,7 +144,7 @@ def pregunta_03():
 
         i = i +1
 
-    return contador
+    return contador[][]
 
 
 def pregunta_04():

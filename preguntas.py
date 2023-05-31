@@ -91,12 +91,12 @@ def pregunta_03():
     ]
 
     """
-    listaa = [z[0] for z in listadef[0:]]
+    listaa = [z[0] for z in datos[0:]]
     listaa = sorted(list(set(listaa)))
 
     listasum= []
     for i in listaa:
-        w = [int(z[1]) for z in listadef[0:] if z[0] == i]
+        w = [int(z[1]) for z in datos[0:] if z[0] == i]
         listasum.append(sum(w))
 
     listasum = list(zip(listaa,listasum))

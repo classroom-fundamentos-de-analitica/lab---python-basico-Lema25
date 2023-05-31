@@ -14,18 +14,14 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 import csv
 
-# Abrimos el archivo
-datos = open("data.csv")
+with open('data.csv','r',encoding='UTF-8') as data:
+    entrada=csv.reader(data,delimiter=' ')
+    lista=list(entrada)
 
-# Limpieza
-datos = [line.replace("\t", ",") for line in datos]
-datos = [line.replace("\n", "") for line in datos]
-
-# Conversión de los strings a listas
-datos = [line.split(",") for line in datos]
-   
-# Organizando las filas
-datos = [row[:11] for row in datos]
+listadef=[]
+for linea in lista:
+    x=linea[0].split('\t')
+    listadef.append(x)
 
 def pregunta_01():
     """
@@ -62,9 +58,7 @@ def pregunta_02():
     ]
 
     """
-   
-    i=0
- 
+
     laux =[]
     for i in datos:
          laux.append(i[0])
@@ -76,7 +70,6 @@ def pregunta_02():
     contador.append(("E",laux.count("E")))
     
     return contador
-
 
 
 def pregunta_03():

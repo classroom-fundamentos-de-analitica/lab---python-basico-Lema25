@@ -14,14 +14,18 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 import csv
 
-with open('data.csv','r',encoding='UTF-8') as data:
-    entrada=csv.reader(data,delimiter=' ')
-    lista=list(entrada)
+# Abrimos el archivo
+datos = open("data.csv")
 
-listadef=[]
-for linea in lista:
-    x=linea[0].split('\t')
-    listadef.append(x)
+# Limpieza
+datos = [line.replace("\t", ",") for line in datos]
+datos = [line.replace("\n", "") for line in datos]
+
+# Conversión de los strings a listas
+datos = [line.split(",") for line in datos]
+   
+# Organizando las filas
+datos = [row[:11] for row in datos]
 
 def pregunta_01():
     """
@@ -58,17 +62,18 @@ def pregunta_02():
     ]
 
     """
-    listaaux=[]
-    for i in listadef:
-        listaaux.append(i[0])
-    listap2=[]
-    listap2.append(("A",listaaux.count("A")))
-    listap2.append(("B",listaaux.count("B")))
-    listap2.append(("C",listaaux.count("C")))
-    listap2.append(("D",listaaux.count("D")))
-    listap2.append(("E",listaaux.count("E")))
+    laux =[]
+    for i in datos:
+         laux.append(i[0])
+    contador=[]
+    contador.append(("A",laux.count("A")))
+    contador.append(("B",laux.count("B")))
+    contador.append(("C",laux.count("C")))
+    contador.append(("D",laux.count("D")))
+    contador.append(("E",laux.count("E")))
+    
+    return contador
 
-    return listap2
 
 
 def pregunta_03():

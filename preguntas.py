@@ -86,26 +86,17 @@ def pregunta_03():
     ]
 
     """
-   
-    i=0
- 
-    contador = [["A",0],["B",0],["C",0],["D",0],["E",0]] 
+    listaa = [z[0] for z in listadef[0:]]
+    listaa = sorted(list(set(listaa)))
 
-    for row in datos:  
-        if datos[i][0] == "A":
-            contador[0][1]= contador[0][1]+int(datos[i][1])
-        elif datos[i][0] == "B":
-            contador[1][1]= contador[1][1]+int(datos[i][1])
-        elif datos[i][0] == "C":
-            contador[2][1]= contador[2][1]+int(datos[i][1])
-        elif datos[i][0] == "D":
-            contador[3][1]= contador[3][1]+int(datos[i][1])
-        elif datos[i][0] == "E":
-            contador[4][1]= contador[4][1]+int(datos[i][1])
+    listasum= []
+    for i in listaa:
+        w = [int(z[1]) for z in listadef[0:] if z[0] == i]
+        listasum.append(sum(w))
 
-        i = i +1
+    listasum = list(zip(listaa,listasum))
+    return listasum
 
-    return contador
 
 
 def pregunta_04():

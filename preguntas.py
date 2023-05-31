@@ -58,18 +58,18 @@ def pregunta_02():
     ]
 
     """
+    listaaux=[]
+    for i in listadef:
+        listaaux.append(i[0])
+    listap2=[]
+    listap2.append(("A",listaaux.count("A")))
+    listap2.append(("B",listaaux.count("B")))
+    listap2.append(("C",listaaux.count("C")))
+    listap2.append(("D",listaaux.count("D")))
+    listap2.append(("E",listaaux.count("E")))
 
-    laux =[]
-    for i in datos:
-         laux.append(i[0])
-    contador=[]
-    contador.append(("A",laux.count("A")))
-    contador.append(("B",laux.count("B")))
-    contador.append(("C",laux.count("C")))
-    contador.append(("D",laux.count("D")))
-    contador.append(("E",laux.count("E")))
-    
-    return contador
+    print(listap2)
+    return listap2
 
 
 def pregunta_03():

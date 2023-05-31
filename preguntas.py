@@ -14,6 +14,19 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 import csv
 
+# Abrimos el archivo
+datos = open("data.csv")
+
+# Limpieza
+datos = [line.replace("\t", ",") for line in datos]
+datos = [line.replace("\n", "") for line in datos]
+
+# Conversión de los strings a listas
+datos = [line.split(",") for line in datos]
+   
+# Organizando las filas
+datos = [row[:11] for row in datos]
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -22,19 +35,6 @@ def pregunta_01():
     214
 
     """
-
-    # Abrimos el archivo
-    datos = open("data.csv")
-
-    # Limpieza
-    datos = [line.replace("\t", ",") for line in datos]
-    datos = [line.replace("\n", "") for line in datos]
-
-    # Conversión de los strings a listas
-    datos = [line.split(",") for line in datos]
-   
-    # Organizando las filas
-    datos = [row[:11] for row in datos]
 
     suma = 0
     i=0
@@ -62,18 +62,6 @@ def pregunta_02():
     ]
 
     """
-    # Abrimos el archivo
-    datos = open("data.csv")
-
-    # Limpieza
-    datos = [line.replace("\t", ",") for line in datos]
-    datos = [line.replace("\n", "") for line in datos]
-
-    # Conversión de los strings a listas
-    datos = [line.split(",") for line in datos]
-   
-    # Organizando las filas
-    datos = [row[:11] for row in datos]
    
     i=0
  
@@ -84,7 +72,16 @@ def pregunta_02():
             if datos[i][0] == contador[j][0]:
                 contador[j][1]= contador[j][1]+1
         i = i +1
-
+    laux =[]
+    for i in datos:
+         laux.append(i[0])
+    contador=[]
+    contador.append(("A",laux.count("A")))
+    contador.append(("B",laux.count("B")))
+    contador.append(("C",laux.count("C")))
+    contador.append(("D",laux.count("D")))
+    contador.append(("E",laux.count("E")))
+    
     return contador
 
 
@@ -104,18 +101,6 @@ def pregunta_03():
     ]
 
     """
-        # Abrimos el archivo
-    datos = open("data.csv")
-
-    # Limpieza
-    datos = [line.replace("\t", ",") for line in datos]
-    datos = [line.replace("\n", "") for line in datos]
-
-    # Conversión de los strings a listas
-    datos = [line.split(",") for line in datos]
-   
-    # Organizando las filas
-    datos = [row[:11] for row in datos]
    
     i=0
  
@@ -160,18 +145,7 @@ def pregunta_04():
     ]
 
     """
-    # Abrimos el archivo
-    datos = open("data.csv")
 
-    # Limpieza
-    datos = [line.replace("\t", ",") for line in datos]
-    datos = [line.replace("\n", "") for line in datos]
-
-    # Conversión de los strings a listas
-    datos = [line.split(",") for line in datos]
-   
-    # Organizando las filas
-    datos = [row[:11] for row in datos]
 
     fecha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     

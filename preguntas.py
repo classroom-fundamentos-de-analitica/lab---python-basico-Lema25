@@ -68,7 +68,6 @@ def pregunta_02():
     listap2.append(("D",listaaux.count("D")))
     listap2.append(("E",listaaux.count("E")))
 
-    print(listap2)
     return listap2
 
 

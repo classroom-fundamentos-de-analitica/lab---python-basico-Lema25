@@ -65,13 +65,6 @@ def pregunta_02():
    
     i=0
  
-    contador = [["A",0],["B",0],["C",0],["D",0],["E",0]] 
-
-    for row in datos:  
-        for j in range(5):
-            if datos[i][0] == contador[j][0]:
-                contador[j][1]= contador[j][1]+1
-        i = i +1
     laux =[]
     for i in datos:
          laux.append(i[0])

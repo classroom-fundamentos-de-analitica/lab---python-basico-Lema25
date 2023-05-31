@@ -71,7 +71,7 @@ def pregunta_02():
     contador.append(("C",laux.count("C")))
     contador.append(("D",laux.count("D")))
     contador.append(("E",laux.count("E")))
-    
+
     return contador
 
 
@@ -91,16 +91,18 @@ def pregunta_03():
     ]
 
     """
-    listaa = [z[0] for z in datos[0:]]
-    listaa = sorted(list(set(listaa)))
+    laux = [z[0] for z in datos[0:]]
+    laux = sorted(list(set(laux)))
 
-    listasum= []
-    for i in listaa:
+    contador= []
+    for i in laux:
         w = [int(z[1]) for z in datos[0:] if z[0] == i]
-        listasum.append(sum(w))
+        contador.append(sum(w))
 
-    listasum = list(zip(listaa,listasum))
-    return listasum
+    contador = list(zip(laux,contador))
+
+
+    return contador
 
 
 
@@ -126,8 +128,6 @@ def pregunta_04():
     ]
 
     """
-
-
     fecha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     i=0 

@@ -128,50 +128,20 @@ def pregunta_04():
     ]
 
     """
-    fecha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    
-    i=0 
+    respuesta = []
 
-    for raw in datos:
-        fecha[i] = datos[i][2]
-        i = i+1
+    lista = [cont[2].split("-") for cont in datos[0:]]
+    lista2 = sorted(list(set([cont[1] for cont in lista])))
 
-    fecha = [line.replace("-", ",") for line in fecha]
-    fecha = [line.split(",") for line in fecha]
 
-    contador = [["01",0],["02",0],["03",0],["04",0],["05",0],["06",0],["07",0],["08",0],["09",0],["10",0],["11",0],["12",0]] 
+    for i in lista2:
+        w = ([cont for cont in lista if cont[1] == i])
+        respuesta.append(len(w))
 
-    cont = 0
+    respuesta = list(zip(lista2,respuesta))
 
-    for row in fecha:
-        if fecha[cont][1] == "01":
-            contador[0][1] = contador[0][1] + 1
-        if fecha[cont][1] == "02":
-            contador[1][1] = contador[1][1] + 1
-        if fecha[cont][1] == "03":
-            contador[2][1] = contador[2][1] + 1
-        if fecha[cont][1] == "04":
-            contador[3][1] = contador[3][1] + 1
-        if fecha[cont][1] == "05":
-            contador[4][1] = contador[4][1] + 1
-        if fecha[cont][1] == "06":
-            contador[5][1] = contador[5][1] + 1
-        if fecha[cont][1] == "07":
-            contador[6][1] = contador[6][1] + 1
-        if fecha[cont][1] == "08":
-            contador[7][1] = contador[7][1] + 1
-        if fecha[cont][1] == "09":
-            contador[8][1] = contador[8][1] + 1
-        if fecha[cont][1] == "10":
-            contador[9][1] = contador[9][1] + 1
-        if fecha[cont][1] == "11":
-            contador[10][1] = contador[10][1] + 1
-        if fecha[cont][1] == "12":
-            contador[11][1] = contador[11][1] + 1
+    return respuesta
 
-        cont  = cont +1
-
-    return contador
 
 def pregunta_05():
     """

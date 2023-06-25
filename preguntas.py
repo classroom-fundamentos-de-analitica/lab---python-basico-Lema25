@@ -14,6 +14,8 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 import csv
 
+
+
 # Abrimos el archivo
 datos = open("data.csv")
 
@@ -27,9 +29,8 @@ datos = [line.split(",") for line in datos]
 # Organizando las filas
 datos = [row[:11] for row in datos]
 
-with open('data.csv','r',encoding='UTF-8') as data:
-entrada=csv.reader(data,delimiter=' ')
-ista=list(entrada)
+entrada=csv.reader(datos,delimiter=' ')
+lista=list(entrada)
 
 def pregunta_01():
     """
@@ -134,12 +135,12 @@ def pregunta_04():
 
     respuesta = []
 
-    lista = [cont[2].split("-") for cont in datos[0:]]
-    lista2 = sorted(list(set([cont[1] for cont in lista])))
+    lista1 = [cont[2].split("-") for cont in datos[0:]]
+    lista2 = sorted(list(set([cont[1] for cont in lista1])))
 
 
     for i in lista2:
-        l = ([cont for cont in lista if cont[1] == i])
+        l = ([cont for cont in lista1 if cont[1] == i])
         respuesta.append(len(l))
 
     respuesta = list(zip(lista2,respuesta))
@@ -408,3 +409,4 @@ def pregunta_12():
         for i in row[4].split(","):
             diccionario[row[0]] = diccionario.get(row[0],0) + int(i[4:])
     return dict(sorted(diccionario.items())) 
+

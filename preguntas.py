@@ -14,7 +14,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 import csv
 
-
+#Datos = Todos los datos separados
 
 # Abrimos el archivo
 datos = open("data.csv")
@@ -25,9 +25,21 @@ datos = [line.replace("\n", "") for line in datos]
 
 # Conversión de los strings a listas
 datos = [line.split(",") for line in datos]
-   
+
 # Organizando las filas
 datos = [row[:11] for row in datos]
+
+#Datos2 = Juntos por tipo
+
+
+with open('data.csv','r',encoding='UTF-8') as data:
+    entrada=csv.reader(data,delimiter=' ')
+    lista=list(entrada)
+
+datos2=[]
+for linea in lista:
+    row=linea[0].split('\t')
+    datos2.append(row)
 
 def pregunta_01():
     """
@@ -179,6 +191,8 @@ def pregunta_05():
 
 
 
+
+
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
@@ -201,31 +215,25 @@ def pregunta_06():
     ]
 
     """
-    diccionario={}
+    diccionario = {}
     respuesta = []
 
-    for row in datos:
+    for row in datos2:
         for i in row[4].split(","):
-
             clave = diccionario.get(str(i[:3]),-1)
             valor = int(i[4:])
-
             if(clave == -1):
-
                 diccionario[str(i[:3])] = (valor,valor)
             if(clave !=-1):
-
                 diccionario[str(i[:3])] = (min(clave[0],valor),max(clave[1],valor))
 
     sort = list(sorted(diccionario.items()))
     
-
     for i in sort:
 
         respuesta.append((i[0],i[1][0],i[1][1]))
 
     return respuesta
-
 
 def pregunta_07():
     """
@@ -285,7 +293,7 @@ def pregunta_08():
     diccionario = {}
     respuesta = []
 
-    for i in datos:
+    for i in datos2:
         current = diccionario.get(i[1],-1)
         if(current == -1):
             diccionario[i[1]] = [i[0]]
@@ -293,7 +301,6 @@ def pregunta_08():
             diccionario[i[1]].append(i[0])
     sort = list(sorted(diccionario.items()))
 
-    
 
     for i in sort:
 
@@ -326,7 +333,7 @@ def pregunta_09():
 
     diccionario={}
 
-    for i in datos:
+    for i in datos2:
         for i in i[4].split(","):
             diccionario[str(i[:3])] = diccionario.get(str(i[:3]),0) + 1
 
@@ -355,7 +362,7 @@ def pregunta_10():
     """
 
     lista = []
-    for i in datos:
+    for i in datos2:
         lista.append((i[0],len(i[3].split(",")),len(i[4].split(","))))
     return lista
 
@@ -381,7 +388,7 @@ def pregunta_11():
 
     """
     diccionario={}
-    for row in datos:
+    for row in datos2:
         for i in row[3].split(","):
             diccionario[str(i)] = diccionario.get(str(i),0) + int(row[1])
     return dict(sorted(diccionario.items()))
@@ -403,8 +410,7 @@ def pregunta_12():
 
     """
     diccionario={}
-    for row in datos:
+    for row in datos2:
         for i in row[4].split(","):
             diccionario[row[0]] = diccionario.get(row[0],0) + int(i[4:])
     return dict(sorted(diccionario.items())) 
-

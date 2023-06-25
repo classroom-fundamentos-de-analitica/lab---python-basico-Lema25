@@ -163,14 +163,14 @@ def pregunta_05():
     min = []
 
     lista = [cont[0] for cont in datos[0:]]
-    lista = sorted(list(set(lista)))
+    lista = sorted(datos(set(lista)))
 
     for i in lista:
         l = [int(cont[1]) for cont in datos[0:] if cont[0] == i]
         max.append(max(l))
         min.append(min(l))
 
-    respuesta = list(zip(lista,max,min))
+    respuesta = datos(zip(lista,max,min))
 
     return respuesta
 

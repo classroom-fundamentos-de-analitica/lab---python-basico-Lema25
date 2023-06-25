@@ -170,9 +170,9 @@ def pregunta_05():
         max.append(max(l))
         min.append(min(l))
 
-    valor = list(zip(lista,max,min))
+    respuesta = list(zip(lista,max,min))
 
-    return valor 
+    return respuesta
 
 
 

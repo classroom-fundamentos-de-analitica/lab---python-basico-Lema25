@@ -27,6 +27,10 @@ datos = [line.split(",") for line in datos]
 # Organizando las filas
 datos = [row[:11] for row in datos]
 
+with open('data.csv','r',encoding='UTF-8') as data:
+entrada=csv.reader(data,delimiter=' ')
+ista=list(entrada)
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -163,14 +167,14 @@ def pregunta_05():
     min = []
 
     lista = [cont[0] for cont in datos[0:]]
-    lista = sorted(datos(set(lista)))
+    lista = sorted(list(set(lista)))
 
     for i in lista:
         l = [int(cont[1]) for cont in datos[0:] if cont[0] == i]
         max.append(max(l))
         min.append(min(l))
 
-    respuesta = datos(zip(lista,max,min))
+    respuesta = list(zip(lista,max,min))
 
     return respuesta
 

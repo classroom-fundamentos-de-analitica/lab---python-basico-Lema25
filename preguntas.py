@@ -29,9 +29,6 @@ datos = [line.split(",") for line in datos]
 # Organizando las filas
 datos = [row[:11] for row in datos]
 
-entrada=csv.reader(datos,delimiter=' ')
-lista=list(entrada)
-
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.

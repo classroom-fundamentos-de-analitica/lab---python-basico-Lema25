@@ -164,18 +164,19 @@ def pregunta_05():
 
     """
 
-    max = []
-    min = []
+    maximo = []
+    minimo = []
 
     lista = [cont[0] for cont in datos[0:]]
     lista = sorted(list(set(lista)))
 
     for i in lista:
         l = [int(cont[1]) for cont in datos[0:] if cont[0] == i]
-        max.append(max(l))
-        min.append(min(l))
+        maximo.append(max(l))
+        minimo.append(min(l))
 
-    respuesta = list(zip(lista,max,min))
+    respuesta = list(zip(lista,maximo,minimo))
+
 
     return respuesta
 

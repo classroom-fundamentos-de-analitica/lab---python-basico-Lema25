@@ -12,6 +12,34 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+import csv
+
+#Datos = Todos los datos separados
+
+# Abrimos el archivo
+datos = open("data.csv")
+
+# Limpieza
+datos = [line.replace("\t", ",") for line in datos]
+datos = [line.replace("\n", "") for line in datos]
+
+# Conversión de los strings a listas
+datos = [line.split(",") for line in datos]
+
+# Organizando las filas
+datos = [row[:11] for row in datos]
+
+#Datos2 = Juntos por tipo
+
+
+with open('data.csv','r',encoding='UTF-8') as data:
+    entrada=csv.reader(data,delimiter=' ')
+    lista=list(entrada)
+
+datos2=[]
+for linea in lista:
+    row=linea[0].split('\t')
+    datos2.append(row)
 
 def pregunta_01():
     """
@@ -21,7 +49,16 @@ def pregunta_01():
     214
 
     """
-    return
+
+    suma = 0
+    i=0
+
+    for row in datos:
+        suma = suma + int(datos[i][1])
+        i = i+1
+
+    return suma
+
 
 
 def pregunta_02():
@@ -39,7 +76,18 @@ def pregunta_02():
     ]
 
     """
-    return
+    laux =[]
+    for i in datos:
+         laux.append(i[0])
+    contador=[]
+    contador.append(("A",laux.count("A")))
+    contador.append(("B",laux.count("B")))
+    contador.append(("C",laux.count("C")))
+    contador.append(("D",laux.count("D")))
+    contador.append(("E",laux.count("E")))
+
+    return contador
+
 
 
 def pregunta_03():
@@ -57,7 +105,18 @@ def pregunta_03():
     ]
 
     """
-    return
+    laux = [j[0] for j in datos[0:]]
+    laux = sorted(list(set(laux)))
+
+    contador= []
+    for i in laux:
+        l = [int(j[1]) for j in datos[0:] if j[0] == i]
+        contador.append(sum(l))
+
+    contador = list(zip(laux,contador)) 
+
+    return contador
+
 
 
 def pregunta_04():
@@ -82,7 +141,20 @@ def pregunta_04():
     ]
 
     """
-    return
+
+    respuesta = []
+
+    lista1 = [cont[2].split("-") for cont in datos[0:]]
+    lista2 = sorted(list(set([cont[1] for cont in lista1])))
+
+
+    for i in lista2:
+        l = ([cont for cont in lista1 if cont[1] == i])
+        respuesta.append(len(l))
+
+    respuesta = list(zip(lista2,respuesta))
+
+    return respuesta
 
 
 def pregunta_05():
@@ -100,7 +172,25 @@ def pregunta_05():
     ]
 
     """
-    return
+
+    maximo = []
+    minimo = []
+
+    lista = [cont[0] for cont in datos[0:]]
+    lista = sorted(list(set(lista)))
+
+    for i in lista:
+        l = [int(cont[1]) for cont in datos[0:] if cont[0] == i]
+        maximo.append(max(l))
+        minimo.append(min(l))
+
+    respuesta = list(zip(lista,maximo,minimo))
+
+
+    return respuesta
+
+
+
 
 
 def pregunta_06():
@@ -125,8 +215,25 @@ def pregunta_06():
     ]
 
     """
-    return
+    diccionario = {}
+    respuesta = []
 
+    for row in datos2:
+        for i in row[4].split(","):
+            clave = diccionario.get(str(i[:3]),-1)
+            valor = int(i[4:])
+            if(clave == -1):
+                diccionario[str(i[:3])] = (valor,valor)
+            if(clave !=-1):
+                diccionario[str(i[:3])] = (min(clave[0],valor),max(clave[1],valor))
+
+    sort = list(sorted(diccionario.items()))
+    
+    for i in sort:
+
+        respuesta.append((i[0],i[1][0],i[1][1]))
+
+    return respuesta
 
 def pregunta_07():
     """
@@ -149,7 +256,15 @@ def pregunta_07():
     ]
 
     """
-    return
+    diccionario = {}
+    for i in datos:
+        index = int(i[1])
+        current = diccionario.get(index,-1)
+        if(current == -1):
+            diccionario[index] = [i[0]]
+        else:
+            diccionario[index].append(i[0])
+    return list(sorted(diccionario.items()))
 
 
 def pregunta_08():
@@ -174,7 +289,25 @@ def pregunta_08():
     ]
 
     """
-    return
+
+    diccionario = {}
+    respuesta = []
+
+    for i in datos2:
+        current = diccionario.get(i[1],-1)
+        if(current == -1):
+            diccionario[i[1]] = [i[0]]
+        else:
+            diccionario[i[1]].append(i[0])
+    sort = list(sorted(diccionario.items()))
+
+
+    for i in sort:
+
+        respuesta.append((int(i[0]),list(sorted(set(i[1])))))
+    return respuesta
+
+
 
 
 def pregunta_09():
@@ -197,7 +330,16 @@ def pregunta_09():
     }
 
     """
-    return
+
+    diccionario={}
+
+    for i in datos2:
+        for i in i[4].split(","):
+            diccionario[str(i[:3])] = diccionario.get(str(i[:3]),0) + 1
+
+    return dict(sorted(diccionario.items()))
+
+
 
 
 def pregunta_10():
@@ -218,7 +360,13 @@ def pregunta_10():
 
 
     """
-    return
+
+    lista = []
+    for i in datos2:
+        lista.append((i[0],len(i[3].split(",")),len(i[4].split(","))))
+    return lista
+
+
 
 
 def pregunta_11():
@@ -239,7 +387,11 @@ def pregunta_11():
 
 
     """
-    return
+    diccionario={}
+    for row in datos2:
+        for i in row[3].split(","):
+            diccionario[str(i)] = diccionario.get(str(i),0) + int(row[1])
+    return dict(sorted(diccionario.items()))
 
 
 def pregunta_12():
@@ -257,4 +409,8 @@ def pregunta_12():
     }
 
     """
-    return
+    diccionario={}
+    for row in datos2:
+        for i in row[4].split(","):
+            diccionario[row[0]] = diccionario.get(row[0],0) + int(i[4:])
+    return dict(sorted(diccionario.items())) 
